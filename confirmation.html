@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're Registered — WAM Leads</title>
+<!-- Meta Pixel (dataset 890920996925932) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '890920996925932');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=890920996925932&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
+<style>
+html,body{background:#0B0E13;margin:0;padding:0;min-height:100vh;}
+#wamcf{width:100%;margin:0;padding:0;background:#0B0E13;color:#fff;font-family:'Inter',sans-serif;line-height:1.55;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;}
+#wamcf .box{max-width:640px;padding:40px 24px;}
+#wamcf .check{font-size:60px;margin-bottom:8px;}
+#wamcf h1{font-family:'Anton',sans-serif;font-size:clamp(32px,5.5vw,52px);line-height:1.1;text-transform:uppercase;margin:10px 0 20px;}
+#wamcf h1 .g{color:#22C55E;}
+#wamcf p{color:#9AA7B8;font-size:18px;margin:0 auto 16px;max-width:520px;}
+#wamcf p b{color:#fff;}
+#wamcf .card{background:#161C26;border-radius:14px;padding:24px;margin:26px auto 0;max-width:520px;}
+#wamcf .card .date{font-family:'Anton',sans-serif;font-size:26px;color:#FACC15;}
+#wamcf .card .lbl{color:#9AA7B8;font-size:14px;margin-top:4px;}
+#wamcf .steps{text-align:left;max-width:520px;margin:26px auto 0;color:#9AA7B8;font-size:15.5px;}
+#wamcf .steps b{color:#fff;}
+#wamcf .cal{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+#wamcf .cal a{background:#22C55E;color:#06210F;font-weight:800;font-size:14.5px;text-decoration:none;padding:11px 16px;border-radius:10px;}
+#wamcf .cal a + a{background:#1D2530;color:#fff;}
+</style>
+</head>
+<body>
+<div id="wamcf">
+  <div class="box">
+    <div class="check">✅</div>
+    <h1>You're <span class="g">Registered!</span></h1>
+    <p><b>Check your phone</b> — I just texted your join link. Save my number so you don't miss it.</p>
+    <div class="card">
+      <div class="date">Sunday · 7:00 PM ET</div>
+      <div class="lbl">WAM Leads Live Training</div>
+      <div class="cal">
+        <a id="cal-google" href="#" target="_blank" rel="noopener">📅 Add to Google Calendar</a>
+        <a id="cal-ics" href="#" download="wam-live-training.ics">🍎 Add to Apple / Outlook</a>
+      </div>
+    </div>
+    <div class="steps">
+      <p><b>Before Sunday:</b></p>
+      <p>1️⃣ Add it to your calendar right now so you don't forget</p>
+      <p>2️⃣ Watch for my reminder texts — your join link comes right before we start</p>
+      <p>3️⃣ Show up live and get my SMS swipe file free</p>
+    </div>
+    <p style="margin-top:26px;font-size:15px;">See you live — Joe (BandoJoe)</p>
+  </div>
+</div>
+<script>
+/* Calendar buttons for the next Sunday 7:00 PM ET (same rule as the sign-up page's countdown). */
+(function(){
+  var now = new Date();
+  var et = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+  var days = (7 - et.getDay()) % 7;
+  var t = new Date(et); t.setDate(et.getDate() + days); t.setHours(19,0,0,0);
+  if(days === 0 && et.getHours() >= 19) t.setDate(t.getDate() + 7);
+  var start = new Date(t.getTime() + (now.getTime() - et.getTime()));
+  var end = new Date(start.getTime() + 90*60000);
+  var z = function(d){ return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); };
+  var title = "WAM Leads Live Training";
+  var details = "Free live training with Joe (BandoJoe). Your join link comes by text right before we start.";
+  document.getElementById('cal-google').href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
+    encodeURIComponent(title) + "&dates=" + z(start) + "/" + z(end) + "&details=" + encodeURIComponent(details);
+  var ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//WAM Leads//Training//EN","BEGIN:VEVENT",
+    "UID:wam-training-" + z(start) + "@wamleads","DTSTAMP:" + z(now),"DTSTART:" + z(start),"DTEND:" + z(end),
+    "SUMMARY:" + title,"DESCRIPTION:" + details,
+    "BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:" + title + " starts in 30 minutes","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  document.getElementById('cal-ics').href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+})();
+</script>
+</body>
+</html>
